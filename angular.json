@@ -3,5 +3,37 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ngx-oidc": {
+      "projectType": "library",
+      "root": "projects/ngx-oidc",
+      "sourceRoot": "projects/ngx-oidc/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-oidc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-oidc/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-oidc/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-oidc/src/test.ts",
+            "tsConfig": "projects/ngx-oidc/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-oidc/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-oidc"
 }
